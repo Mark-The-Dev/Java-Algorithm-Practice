@@ -63,4 +63,32 @@ public class MediumAlgo {
         return spiralList;
     }
 
+    // check if array values are monotonic
+    public static boolean isMonotonic(int[] array) {
+        // Write your code here.
+
+        boolean inc = false;
+        boolean dec = false;
+
+        for (int i =1; i < array.length; i++){
+
+            if (array[i] > array[i -1]){
+
+                inc = true;
+
+            } else if (array[i] < array[i - 1]){
+
+                dec = true;
+            }
+
+            if (inc && dec){
+
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
 }
