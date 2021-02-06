@@ -90,5 +90,23 @@ public class MediumAlgo {
 
         return true;
     }
+    //first duplicate value in array
+    public int firstDuplicateValue(int[] array) {
+        // Write your code here.
+
+        ArrayList<Integer> newVals =  new ArrayList<Integer>();
+
+        for (int i= 0; i < array.length; i++){
+
+            if (newVals.contains(array[i])){
+
+                return array[i];
+            }
+
+            newVals.add(array[i]);
+        }
+
+        return -1;
+    }
 
 }
