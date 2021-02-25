@@ -108,5 +108,37 @@ public class MediumAlgo {
 
         return -1;
     }
+    // create an output of array values as a product of the other values.
+    public int[] arrayOfProducts(int[] array) {
+        // Write your code here.
+
+        if (array.length == 0) return new int[] {};
+
+        int[] output = new int[array.length];
+
+        int size = array.length - 1;
+        int outerLoop = 0;
+        int innerLoop = 0;
+        int currentVal = 1;
+
+        while(outerLoop <= size){
+
+            if(innerLoop != outerLoop){
+                currentVal *= array[innerLoop];
+            }
+
+            if (innerLoop == size){
+                output[outerLoop] = currentVal;
+                outerLoop++;
+                innerLoop = 0;
+                currentVal = 1;
+
+            } else {
+                innerLoop++;
+            }
+        }
+        return output;
+    }
+}
 
 }
