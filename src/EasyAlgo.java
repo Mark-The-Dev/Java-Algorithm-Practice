@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class EasyAlgo {
 
     public static int binarySearch(int[] array, int target) {
@@ -38,6 +40,28 @@ public class EasyAlgo {
         }
 
         return -1;
+    }
+
+    public int nonConstructibleChange(int[] coins) {
+
+        int canCount = 0;
+
+        if (coins.length == 0) return 1;
+
+        Arrays.sort(coins);
+
+        for (int i = 0; i< coins.length; i++){
+            if (coins[i] > canCount + 1){
+                break;
+
+            } else {
+                canCount += coins[i];
+
+            }
+        }
+
+
+        return canCount + 1;
     }
 
 }
