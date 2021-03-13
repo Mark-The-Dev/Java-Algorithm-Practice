@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class EasyAlgo {
 
@@ -62,6 +63,40 @@ public class EasyAlgo {
 
 
         return canCount + 1;
+    }
+
+    // validates if a document can be made with a specific string.
+    public boolean generateDocument(String characters, String document) {
+
+        if (document.length() == 0) return true;
+        if (characters.length() < document.length()) return false;
+
+        HashMap<Character, Integer> chars = new HashMap<>();
+        HashMap<Character, Integer> doc = new HashMap<>();
+
+        for (int i = 0; i < characters.length(); i++){
+            if (!chars.containsKey(characters.charAt(i))){
+                chars.put(characters.charAt(i), 1);
+            } else {
+                chars.put(characters.charAt(i), chars.get(characters.charAt(i)) + 1);
+            }
+        }
+
+        for (int i =0; i < document.length(); i++){
+            if (!doc.containsKey(document.charAt(i))){
+                doc.put(document.charAt(i), 1);
+            } else {
+                doc.put(document.charAt(i), doc.get(document.charAt(i)) + 1);
+            }
+        }
+
+
+
+
+        for (Character value : doc.keySet()){
+            if ( chars.get(value) == null || chars.get(value) < doc.get(value)) return false;
+        }
+        return true;
     }
 
 }
