@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EasyAlgo {
 
@@ -98,5 +99,27 @@ public class EasyAlgo {
         }
         return true;
     }
+
+    // find first non repeated character in a string.
+    public int firstNonRepeatingCharacter(String string) {
+
+        int result = -1;
+        Map<Character, Integer> letterCount = new HashMap<>();
+
+        for (int i =0; i< string.length(); i++){
+            char character = string.charAt(i);
+
+            letterCount.put(character, letterCount.getOrDefault(character, 0) +1);
+        }
+
+        for (int i = 0; i< string.length(); i++){
+            if ( letterCount.get(string.charAt(i)) == 1){
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+}
 
 }
