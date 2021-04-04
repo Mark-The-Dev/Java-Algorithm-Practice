@@ -163,6 +163,37 @@ public class MediumAlgo {
         }
         return numOfCoins[n] != Integer.MAX_VALUE ? numOfCoins[n] : -1;
     }
+
+    // Algo to find the max sum of non adjacent numbers in array.
+    // O(n) Time complexity, O(1) space complexity
+    public static int maxSubsetSumNoAdjacent(int[] array) {
+
+        // if empty or one array item
+        if (array.length == 0){
+            return 0;
+        } else if (array.length == 1){
+            return array[0];
+        }
+
+        // max value of first slot
+        int second = array[0];
+
+        // max value of second slot
+        int first = Math.max(array[0], array[1]);
+
+        for (int i =2; i< array.length; i++){
+            // check the previous max vs the new idx + older adjacent value
+            int current = Math.max(first, second + array[i]);
+
+            // reset second to the previous max
+            second = first;
+
+            // set first to the current max
+            first = current;
+        }
+
+        return first;
+    }
 }
 
 
